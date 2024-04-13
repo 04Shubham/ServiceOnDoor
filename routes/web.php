@@ -1,22 +1,48 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\CategoryController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/cart/orders', function(){
+    echo "Hello from order";
+})->name("order");
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+ 
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+ 
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get('/profile', function () {
+    // Only verified users may access this route...
+})->middleware(['auth', 'verified']);
+
+
+Route::get('/form',[App\Http\Controllers\Partner\FormController::class, 'index'])->name('form');
 
 
 // user route
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
     Route::get('/category/{slug}',[App\Http\Controllers\Client\CategoryController::class,'index'] );
-    Route::get('/category/{category_slug}/{service_slug}',[App\Http\Controllers\Client\ServiceController::class,'index'] );
+    Route::get('/category/{category_slug}/{service_slug}',[App\Http\Controllers\Client\ServiceController::class,'index'])->name('user.category');
     Route::get('/book/{service_id}',[App\Http\Controllers\Client\BookedController::class, 'store'] );
     Route::get('/profile',[App\Http\Controllers\Client\ProfileController::class, 'index'] )->name('profile');
-    Route::get('/services/{slug}',[App\Http\Controllers\Client\ServiceController::class,'view']);
+    Route::get('/services/{slug}',[App\Http\Controllers\Client\ServiceController::class,'view'])->name('sevices');
 }); 
 
 

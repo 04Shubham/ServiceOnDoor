@@ -72,10 +72,10 @@
         </a>
         <div id="collapseFeatured" class="collapse {{Request::is('admin/featured/services') || Request::is('admin/featured/categories') ? 'show' : ''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item {{ Request::is('admin/featured/services') ? 'active' : '' }}"
-                    href="{{ url('/admin/featured/services') }}">services</a>
                 <a class="collapse-item {{ Request::is('admin/featured/categories') ? 'active' : '' }}"
                     href="{{ url('/admin/featured/categories') }}">Categories</a>
+                <a class="collapse-item {{ Request::is('admin/featured/services') ? 'active' : '' }}"
+                    href="{{ url('/admin/featured/services') }}">services</a>
             </div>
         </div>
     </li>

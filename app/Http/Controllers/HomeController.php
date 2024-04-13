@@ -20,5 +20,9 @@ class HomeController extends Controller
    {
         return view('client.home');
    }
+   public function ord()
+   {
+       return view('home');
+   }
 
 }

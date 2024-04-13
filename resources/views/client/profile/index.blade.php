@@ -1,10 +1,10 @@
 @extends('layouts.client.master')
-@section('title', 'Profile- - ELearers')
+@section('title', 'Profile- - Doors')
 
 
 @section('content')
-@include('layouts.client.nav ')
-    
+<div class="container-fluid py-5">
+    <div class="container-fluid py-5">
     <div class="container-fluid py-2">
         <div class="container py-2">
             <div class="text-center mb-5">
@@ -23,7 +23,7 @@
                                     @foreach ($booked_services as $service)
                                     <div class="d-flex justify-content-between mb-5">
                                         <h5 class="m-0">{{$service->title}}</h5>
-                                        <a class="btn btn-primary" href="{{url('/services/'.$servicee->slug)}}">Continue learning</a>
+                                        <a class="btn btn-primary" href="{{url('/services/'.$service->slug)}}">Continue learning</a>
                                     </div>
                                     @endforeach
                                 </div>
@@ -35,6 +35,7 @@
             </div>
         </div>
     </div>
-         
+</div>
+</div>
 
  @endsection

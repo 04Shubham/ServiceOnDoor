@@ -20,10 +20,10 @@ class ProfileController extends Controller
         $booked_services = [];
         foreach($bookeds as $item){
             $service = service::find($item->service_id);
-            array_push($enrolled_services, $service);
+            array_push($booked_services, $service);
         }
         // dd($enrolled_services);
         // die;
-        return view('client.profile.index', compact('bookeded_services'));
+        return view('client.profile.index', compact('booked_services'));
     }
 }

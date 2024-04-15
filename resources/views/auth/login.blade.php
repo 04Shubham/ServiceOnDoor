@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid bg-primary hero-header text-white mb-0">
         <div class="container-fluid px-lg-5">
-            {{-- Login  --}}
+           <!--  Login -->
             <div class="row d-flex justify-content-center align-items-center h-100 mt-10px">
                 <div class="col-md-9 col-lg-6 col-xl-5">
                     <img src="{{asset('client/img/login.png')}}"
@@ -100,5 +100,7 @@
             </div>
         </div>
     </div>
-    {{-- Login end  --}}
+    <!-- Login end  -->
 @endsection
+
+

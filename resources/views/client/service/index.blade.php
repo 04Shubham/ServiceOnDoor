@@ -28,7 +28,7 @@
                                 ->first();
                         @endphp
                         @if ( $isBook )
-                        <button class="btn btn-primary disabled">Book</button>
+                        <a class="btn btn-danger disabled">Booked</a>
                         @else
                         <a href="{{ url('/book/' . $service->id) }}" class="btn btn-primary">Booking Now</a>
                         @endif

@@ -16,10 +16,10 @@
         </div>
         <div class="navbar-nav">
             @guest
-                <a href="{{ route('form') }}" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Become Partner</a>
-                <a href="{{ route('login') }}" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a>
+            <a href="{{ route('form') }}" class="btn rounded-pill py-2 px-4 ms-3 ">Collaborate</a>
+            <a href="{{ route('login') }}" class="btn rounded-pill py-2 px-4 ms-3 ">Get Started</a>
             @else
-                <a href="{{ url('/cart') }}" class="nav-item nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
+            <a href="{{ url('/cart') }}" class="nav-item nav-link"><i class="fas fa-shopping-cart"></i> Cart</a>
                 <div class="dropdown">
                     <a class="nav-item nav-link" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
